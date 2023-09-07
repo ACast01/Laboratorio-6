@@ -1,0 +1,35 @@
+import matplotlib.pyplot as plt
+
+print("Laboratorio de Suma Acumulativa")
+n = int(input("Ingrese la cantidad de números que desea sumar: "))
+
+# Validar que n sea un entero positivo
+while n <= 0:
+    print("Ingrese un entero positivo.")
+    n = int(input("Ingrese la cantidad de números que desea sumar: "))
+
+numeros = []
+suma_acumulativa = []
+
+for i in range(n):
+    numero = float(input(f"Ingrese el número {i + 1}: "))
+    numeros.append(numero)
+
+    # Calcular la suma acumulativa
+    if i == 0:
+        suma_acumulativa.append(numero)
+    else:
+        suma_acumulativa.append(suma_acumulativa[i - 1] + numero)
+
+# Mostrar la suma acumulativa como una lista
+print("Suma Acumulativa:")
+for i, suma in enumerate(suma_acumulativa):
+    print(f"Para el número {i + 1}, la suma acumulativa es: {suma}")
+
+# Crear el gráfico de barras
+plt.bar(range(1, n + 1), suma_acumulativa)
+plt.xlabel("Número de entrada")
+plt.ylabel("Suma Acumulativa")
+plt.title("Gráfico de Suma Acumulativa")
+plt.show()
+ 
